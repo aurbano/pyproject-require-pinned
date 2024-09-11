@@ -1,0 +1,9 @@
+-   id: pyproject-require-pinned
+    name: Require Pinned Dependencies
+    description: 'Require pinned versions in pyproject.toml'
+    entry: pyproject-require-pinned
+    require_serial: true
+    pass_filenames: true
+    always_run: true
+    language: python
+    files: 'pyproject\.toml$'

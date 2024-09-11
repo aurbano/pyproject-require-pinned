@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pyproject-require-pinned"
+version = "1.0.0"
+description = ""
+readme = "README.md"
+license = "MIT"
+keywords = ["pyproject.toml"]
+authors = ["Alejandro Alvarez"]
+
+[tool.poetry.dependencies]
+python = ">=3.9.0"
+toml = "0.10.2"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "3.6.2"
+
+[tool.poetry.scripts]
+pyproject-require-pinned = "pyproject_require_pinned.main:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
