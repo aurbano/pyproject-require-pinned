@@ -1,0 +1,6 @@
+[tool.poetry.dependencies]
+python = ">=3.9.0"
+something = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+something = "1.0.0"

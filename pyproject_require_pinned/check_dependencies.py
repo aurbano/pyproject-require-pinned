@@ -5,11 +5,18 @@ from pyproject_require_pinned.load_pyproject import load_pyproject
 
 
 def check_dependencies(project_path: str):
+    if _are_dependencies_valid(project_path):
+        sys.exit(0)
+    else:
+        sys.exit(1)
+
+
+def _are_dependencies_valid(project_path: str):
     try:
         data = load_pyproject(project_path)
     except Exception as e:
         print(f"Error loading file: {e}")
-        sys.exit(1)
+        return False
 
     dependencies = data.get("dependencies", {})
     poetry_dependencies = data.get("tool", {}).get("poetry", {}).get("dependencies", {})
@@ -18,7 +25,7 @@ def check_dependencies(project_path: str):
 
     if not all_dependencies:
         print("No dependencies found.")
-        sys.exit(0)
+        return True
 
     unpinned_dependencies, non_develop_local_dependencies = check_versions_pinned(
         all_dependencies
@@ -37,6 +44,6 @@ def check_dependencies(project_path: str):
 
             for package, version in non_develop_local_dependencies:
                 print(f"- {package}")
-        sys.exit(1)
+        return False
     else:
-        sys.exit(0)
+        return True
