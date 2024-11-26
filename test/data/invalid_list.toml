@@ -1,0 +1,6 @@
+[tool.poetry.dependencies]
+python = ">=3.9.0"
+array-form = [{ version = "1.2.3" }, { version = "^0.1.2" }]
+
+[tool.poetry.group.dev.dependencies]
+something = "1.0.0"
